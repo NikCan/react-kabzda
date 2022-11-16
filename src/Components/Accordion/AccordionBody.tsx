@@ -1,9 +1,13 @@
-export const AccordionBody = () => {
+import {ItemType} from "./Accordion";
+
+type BodyPropsType = {
+    items: ItemType[]
+}
+
+export const AccordionBody = (props: BodyPropsType) => {
     return (
         < ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {props.items.map(el => <li>{el.title}</li>)}
         </ul>
     )
 

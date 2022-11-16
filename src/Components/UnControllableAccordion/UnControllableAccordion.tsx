@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {UnControllableAccordionTitle} from "./UnControllableAccordionTitle";
-import {AccordionBody} from "../Accordion/AccordionBody";
+import {UnControllableAccordionBody} from "./UnControllableAccordionBody";
 
 type UnControllableAccordion = {}
 
@@ -12,6 +12,6 @@ export const UnControllableAccordion = (props: UnControllableAccordion) => {
     }
     return <div>
         <UnControllableAccordionTitle callBack = {collapsedMenu} title={title}/>
-        {!collapsed && <AccordionBody/>}
+        {!collapsed && <UnControllableAccordionBody/>}
     </div>
 }
