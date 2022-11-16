@@ -1,5 +1,3 @@
-import {Star} from "./Star";
-
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
 export type RatingType = {
@@ -16,5 +14,18 @@ export const Rating = (props: RatingType) => {
             <Star selected={props.value > 4} onClick={props.onClick} value={5}/>
         </div>
     )
+}
+
+type StarType = {
+    selected: boolean
+    onClick: (value: RatingValueType) => void
+    value: RatingValueType
+}
+
+const Star = (props: StarType) => {
+    const onClickHandler = () => {
+        props.onClick(props.value)
+    }
+    return <span onClick={onClickHandler}>{props.selected ? <b>★ </b> : "★ "}</span>
 }
 

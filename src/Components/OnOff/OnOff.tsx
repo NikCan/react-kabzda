@@ -1,9 +1,9 @@
-type OnOfPropsType = {
+type OnOffPropsType = {
     onClickOnOff: (on: boolean) => void
     on: boolean
 }
 
-export const OnOff = (props: OnOfPropsType) => {
+export const OnOff = (props: OnOffPropsType) => {
     const divStyle = {display: "flex"}
     const onStyle = {
         fontSize: "x-large",
