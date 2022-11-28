@@ -1,0 +1,34 @@
+.select {
+    display: flex;
+    border: solid gray 1px;
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.item {
+    display: flex;
+    height: 30px;
+    margin: auto;
+    align-items: center;
+}
+
+.item.selected {
+    background-color: blue;
+    color:white;
+}
+
+.item:hover {
+    background-color: blue;
+    color:white;
+}

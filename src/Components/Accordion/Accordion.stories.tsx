@@ -8,7 +8,7 @@ export default {
     component: Accordion,
     argTypes: {
         color: {
-            control:'color',
+            control: 'color',
             table: {
                 category: 'Colors'
             }
@@ -23,23 +23,24 @@ export default {
 const Template: Story<AccordionType> = (args) => <Accordion {...args}/>
 export const CollapsedMode = Template.bind({})
 CollapsedMode.args = {
-    items: [{title: '1', value: 1},
-        {title: '2', value: 2},
-        {title: '3', value: 3},
-        {title: '4', value: 4}],
+    items: [{title: '1', id: 1},
+        {title: '2', id: 2},
+        {title: '3', id: 3},
+        {title: '4', id: 4}],
     titleValue: "Collapsed",
     onClickCollapse: action("I can uncollapse"),
-    accordionCollapsed: true
+    accordionCollapsed: true,
 }
 export const UncollapsedMode: Story<AccordionType> = Template.bind({})
 UncollapsedMode.args = {
-    items: [{title: '1', value: 1},
-        {title: '2', value: 2},
-        {title: '3', value: 3},
-        {title: '4', value: 4}],
+    items: [{title: '1', id: 1},
+        {title: '2', id: 2},
+        {title: '3', id: 3},
+        {title: '4', id: 4}],
     titleValue: "Uncollapsed",
     onClickCollapse: action("I can uncollapse"),
-    accordionCollapsed: false
+    accordionCollapsed: false,
+    onClickItem: action("Hey!")
 }
 
 // export const CollapsedMode = () => <Accordion onClickCollapse={action("I can uncollapse")} accordionCollapsed={true}
@@ -52,9 +53,10 @@ export const ModeChanging: Story<AccordionType> = (args) => {
     return <Accordion {...args} onClickCollapse={setValue} accordionCollapsed={value}/>
 }
 ModeChanging.args = {
-    items: [{title: '1', value: 1},
-        {title: '2', value: 2},
-        {title: '3', value: 3},
-        {title: '4', value: 4}],
+    items: [{title: '1', id: 1},
+        {title: '2', id: 2},
+        {title: '3', id: 3},
+        {title: '4', id: 4}],
     titleValue: "Menu",
+    onClickItem: (id) => alert(id)
 }
