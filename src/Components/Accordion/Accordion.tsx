@@ -1,5 +1,6 @@
-import {AccordionTitle} from "./AccordionTitle";
+import {AccordionTitle} from "./AccordionTitleSecret";
 import {AccordionBody} from "./AccordionBody";
+import React from "react";
 
 export type ItemType = {
     title: string
@@ -22,12 +23,14 @@ const items: ItemType[] = [
     {title: '3', id: 3},
     {title: '4', id: 4}
 ]
-export const Accordion = (props: AccordionType) => {
+const AccordionSecret = (props: AccordionType) => {
         return <>
         <AccordionTitle title={props.titleValue}
-                        style={props.color ? {color: props.color} : {color:"red"}}
-                        accordionCollapsed={props.accordionCollapsed}
-                        onClickCollapse={props.onClickCollapse}/>
+                              style={props.color ? {color: props.color} : {color:"red"}}
+                              accordionCollapsed={props.accordionCollapsed}
+                              onClickCollapse={props.onClickCollapse}/>
         {!props.accordionCollapsed && <AccordionBody callBack={props.onClickItem} items={items}/>}
     </>
 }
+
+export const Accordion = React.memo(AccordionSecret)

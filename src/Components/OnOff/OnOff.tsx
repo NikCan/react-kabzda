@@ -1,9 +1,11 @@
+import React from "react";
+
 type OnOffPropsType = {
     onClickOnOff: (on: boolean) => void
     on: boolean
 }
 
-export const OnOff = (props: OnOffPropsType) => {
+const OnOffSecret = (props: OnOffPropsType) => {
     const divStyle = {display: "flex"}
     const onStyle = {
         fontSize: "x-large",
@@ -38,3 +40,4 @@ export const OnOff = (props: OnOffPropsType) => {
     )
 }
 
+export const OnOff = React.memo(OnOffSecret)

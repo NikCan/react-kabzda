@@ -1,11 +1,12 @@
 import {ItemType} from "./Accordion";
+import React from "react";
 
 type BodyPropsType = {
     items: ItemType[]
     callBack: (id: number) => void
 }
 
-export const AccordionBody = (props: BodyPropsType) => {
+const AccordionBodySecret = (props: BodyPropsType) => {
     return (
         < ul>
             {props.items.map(el => {
@@ -16,5 +17,5 @@ export const AccordionBody = (props: BodyPropsType) => {
             })}
         </ul>
     )
-
 }
+export const AccordionBody = React.memo(AccordionBodySecret)
