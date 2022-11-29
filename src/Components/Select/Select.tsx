@@ -1,5 +1,5 @@
 import s from "./Select.module.css"
-import {KeyboardEvent, useState} from "react";
+import React, {KeyboardEvent, useState} from "react";
 
 type itemsType = {
     id: string
@@ -11,7 +11,7 @@ export type SelectPropsType = {
     onChange: (value: string) => void
 }
 
-export function Select(props: SelectPropsType) {
+function SelectSecret(props: SelectPropsType) {
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const [hoveredItem, setHoveredItem] = useState<string>(props.title)
     const onClickDivHandler = () => setCollapsed(!collapsed)
@@ -55,3 +55,4 @@ export function Select(props: SelectPropsType) {
             </div>}
     </div>
 }
+export const Select = React.memo(SelectSecret)

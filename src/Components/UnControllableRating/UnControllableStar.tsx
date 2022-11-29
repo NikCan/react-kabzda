@@ -1,10 +1,12 @@
+import React from "react";
+
 type UnControllableStarType = {
     selected: boolean
     setValue: () => void
 }
 
-export const UnControllableStar = (props: UnControllableStarType) => {
+const UnControllableStarSecret = (props: UnControllableStarType) => {
     return <span onClick={() => {props.setValue()}}>
         {props.selected ? <b>★ </b> : "★ "}</span>
 }
-
+export const UnControllableStar = React.memo(UnControllableStarSecret)

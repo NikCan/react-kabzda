@@ -1,10 +1,10 @@
-import {useState} from "react";
+import React from "react";
 
 type UnControllableAccordionTitleType = {
     callBack: () => void
     title: string
 }
-export const UnControllableAccordionTitle = (props: UnControllableAccordionTitleType) => {
+const UnControllableAccordionTitleSecret = (props: UnControllableAccordionTitleType) => {
     const onclickHandler = () => {
         props.callBack()
     }
@@ -12,3 +12,4 @@ export const UnControllableAccordionTitle = (props: UnControllableAccordionTitle
         <h3 onClick={onclickHandler}>{props.title}</h3>
     </>
 }
+export const UnControllableAccordionTitle = React.memo(UnControllableAccordionTitleSecret)

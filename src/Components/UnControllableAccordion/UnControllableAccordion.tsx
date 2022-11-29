@@ -1,4 +1,4 @@
-import {useReducer} from "react";
+import React, {useReducer} from "react";
 import {UnControllableAccordionTitle} from "./UnControllableAccordionTitle";
 import {UnControllableAccordionBody} from "./UnControllableAccordionBody";
 import {reducer} from "./reducer";
@@ -9,7 +9,7 @@ export type StateType = {
     collapsed: boolean
 }
 
-export const UnControllableAccordion = (props: UnControllableAccordion) => {
+const UnControllableAccordionSecret = (props: UnControllableAccordion) => {
     const title = "---UnControllable Menu---"
     const [state, dispatch] = useReducer(reducer, {collapsed: false})
     const collapsedMenu = () => {
@@ -20,3 +20,4 @@ export const UnControllableAccordion = (props: UnControllableAccordion) => {
         {!state.collapsed && <UnControllableAccordionBody/>}
     </div>
 }
+export const UnControllableAccordion = React.memo(UnControllableAccordionSecret)

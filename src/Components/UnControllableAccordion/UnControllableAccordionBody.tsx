@@ -6,5 +6,4 @@ export const UnControllableAccordionBody = () => {
             <li>3</li>
         </ul>
     )
-
 }
