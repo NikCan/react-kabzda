@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {Select} from "./Select";
 import {v1} from "uuid";
-import {string} from "prop-types";
-import {action} from "@storybook/addon-actions";
 
 export default {
     title: 'Select stories',

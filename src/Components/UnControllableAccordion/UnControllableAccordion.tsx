@@ -1,17 +1,22 @@
-import {useState} from "react";
+import {useReducer} from "react";
 import {UnControllableAccordionTitle} from "./UnControllableAccordionTitle";
 import {UnControllableAccordionBody} from "./UnControllableAccordionBody";
+import {reducer} from "./reducer";
 
 type UnControllableAccordion = {}
 
+export type StateType = {
+    collapsed: boolean
+}
+
 export const UnControllableAccordion = (props: UnControllableAccordion) => {
     const title = "---UnControllable Menu---"
-    const [collapsed, setCollapsed] = useState(true)
+    const [state, dispatch] = useReducer(reducer, {collapsed: false})
     const collapsedMenu = () => {
-        setCollapsed(!collapsed)
+        dispatch({type: "TOGGLE-COLLAPSED"})
     }
     return <div>
-        <UnControllableAccordionTitle callBack = {collapsedMenu} title={title}/>
-        {!collapsed && <UnControllableAccordionBody/>}
+        <UnControllableAccordionTitle callBack={collapsedMenu} title={title}/>
+        {!state.collapsed && <UnControllableAccordionBody/>}
     </div>
 }

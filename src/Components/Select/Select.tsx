@@ -22,8 +22,21 @@ export function Select(props: SelectPropsType) {
     const onKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
         for (let i = 0; i < props.items.length; i++) {
             if (hoveredItem === props.items[i].title) {
-                e.code === "ArrowDown" && setHoveredItem(props.items[i + 1].title)
-                e.code === "ArrowUp" && setHoveredItem(props.items[i - 1].title)
+                if (e.code === "ArrowDown" || e.code === "ArrowRight") {
+                    if (i !== props.items.length-1) {
+                        setHoveredItem(props.items[i + 1].title)
+                        props.onChange(props.items[i + 1].title)
+                    }
+                }
+                if (e.code === "ArrowUp"|| e.code === "ArrowLeft") {
+                    if (i !== 0) {
+                        setHoveredItem(props.items[i - 1].title)
+                        props.onChange(props.items[i - 1].title)
+                    }
+                }
+                if (e.code === "Escape" || e.code === "Enter") {
+                    setCollapsed(false)
+                }
             }
         }
     }

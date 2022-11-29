@@ -43,11 +43,6 @@ UncollapsedMode.args = {
     onClickItem: action("Hey!")
 }
 
-// export const CollapsedMode = () => <Accordion onClickCollapse={action("I can uncollapse")} accordionCollapsed={true}
-//                                               titleValue={"Collapsed"}/>
-// export const UncollapsedMode = () => <Accordion onClickCollapse={action("I can collapse")} accordionCollapsed={false}
-//                                                 titleValue={"Uncollapsed"}/>
-
 export const ModeChanging: Story<AccordionType> = (args) => {
     const [value, setValue] = useState<boolean>(true)
     return <Accordion {...args} onClickCollapse={setValue} accordionCollapsed={value}/>
