@@ -3,7 +3,9 @@ import React, {KeyboardEvent, useState} from "react";
 
 type itemsType = {
     id: string
-    title: string
+    city: string
+    country: string
+    people: number
 }
 export type SelectPropsType = {
     items: Array<itemsType>
@@ -12,6 +14,7 @@ export type SelectPropsType = {
 }
 
 function SelectSecret(props: SelectPropsType) {
+    console.log("tssss")
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const [hoveredItem, setHoveredItem] = useState<string>(props.title)
     const onClickDivHandler = () => setCollapsed(!collapsed)
@@ -21,17 +24,17 @@ function SelectSecret(props: SelectPropsType) {
     }
     const onKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
         for (let i = 0; i < props.items.length; i++) {
-            if (hoveredItem === props.items[i].title) {
+            if (hoveredItem === props.items[i].city) {
                 if (e.code === "ArrowDown" || e.code === "ArrowRight") {
                     if (i !== props.items.length-1) {
-                        setHoveredItem(props.items[i + 1].title)
-                        props.onChange(props.items[i + 1].title)
+                        setHoveredItem(props.items[i + 1].city)
+                        props.onChange(props.items[i + 1].city)
                     }
                 }
                 if (e.code === "ArrowUp"|| e.code === "ArrowLeft") {
                     if (i !== 0) {
-                        setHoveredItem(props.items[i - 1].title)
-                        props.onChange(props.items[i - 1].title)
+                        setHoveredItem(props.items[i - 1].city)
+                        props.onChange(props.items[i - 1].city)
                     }
                 }
                 if (e.code === "Escape" || e.code === "Enter") {
@@ -47,10 +50,10 @@ function SelectSecret(props: SelectPropsType) {
         </div>
         {collapsed &&
             <div className={s.select + ' ' + s.items}>{
-                props.items.map(el => <div className={s.item + " " + (el.title === hoveredItem ? s.selected : "")}
-                                           onMouseEnter={() => setHoveredItem(el.title)}
-                                           onClick={() => onClickItem(el.title)}
-                                           key={el.id}>{el.title}</div>)
+                props.items.map(el => <div className={s.item + " " + (el.city === hoveredItem ? s.selected : "")}
+                                           onMouseEnter={() => setHoveredItem(el.city)}
+                                           onClick={() => onClickItem(el.city)}
+                                           key={el.id}>{el.city}</div>)
             }
             </div>}
     </div>
