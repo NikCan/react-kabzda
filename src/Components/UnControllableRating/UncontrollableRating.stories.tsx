@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {UnControllableRating} from "./UnControllableRating";
 import {action} from "@storybook/addon-actions";
 
