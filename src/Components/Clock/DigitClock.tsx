@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
-type DigitClockPropsType = {}
+type DigitClockPropsType = {
+    date: Date
+}
 
 const get2digitString = (num: number) => num < 10 ? "0" + num : num
 
-export const DigitClock: React.FC<DigitClockPropsType> = (props) => {
-    const [date, setDate] = useState(new Date())
-    useEffect(() => {
-
-        const intervalId = setInterval(() => {
-            setDate(new Date())
-        }, 1000)
-
-        return () => clearInterval(intervalId)
-    }, [])
+export const DigitClock: React.FC<DigitClockPropsType> = ({date}) => {
 
     return <div>
         <span>{get2digitString(date.getHours())}</span>
