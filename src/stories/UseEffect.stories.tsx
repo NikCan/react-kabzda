@@ -38,10 +38,13 @@ export const SetTimeOutExample = () => {
     const [fake, setFake] = useState(1)
 
     useEffect(() => {
-        setTimeout(() => {
+        const intervalId = setTimeout(() => {
             console.log("setTimeOut")
             document.title = counter.toString()
-        }, 1000)
+        }, 5000)
+        return () => {
+            clearTimeout(intervalId)
+        }
     }, [counter])
 
     return <>
@@ -57,9 +60,12 @@ export const SetIntervalExample = () => {
     const [fake, setFake] = useState(1)
 
     useEffect(() => {
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             setCounter(state => state + 1)
         }, 1000)
+        return () => {
+            clearInterval(intervalId)
+        }
     }, [])
 
     return <>
@@ -70,7 +76,7 @@ export const SetIntervalExample = () => {
 export const ClockExample = () => {
     console.log("ClockExample")
     const [counter, setCounter] = useState(1)
-    const date = new Date ()
+    const date = new Date()
     useEffect(() => {
         setInterval(() => {
             setCounter(state => state + 1)
@@ -81,3 +87,47 @@ export const ClockExample = () => {
         {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
     </>
 }
+
+export const ResetEffectExample = () => {
+    console.log("ResetEffectExample rendered")
+    const [counter, setCounter] = useState(1)
+
+    useEffect(() => {
+        console.log("effect occurred" + counter)
+
+        return () => {
+            console.log('reset effect' + counter)
+        }
+    }, [counter])
+
+    return <>
+        Hello, counter {counter}!
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+    </>
+}
+
+export const KeysTrackerExample = () => {
+    const [text, setText] = useState("")
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText((state) => state + e.key)
+        }
+        window.addEventListener('keydown', handler)
+        return () => {
+            window.removeEventListener('keydown', handler)
+        }
+    }, [text])
+
+    return <>
+        Typed text: {text}
+    </>
+}
+
+
+
+
+
+
+
